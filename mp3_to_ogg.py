@@ -1,5 +1,7 @@
 from pydub import AudioSegment
 import sys,os,glob
+from progress_bar import progress_bar
+from progress.spinner import Spinner
 
 def mp3_to_ogg(path):
 
@@ -19,9 +21,8 @@ def mp3_to_ogg(path):
 	    	if os.path.isfile(f'./export/{name}.ogg'):
 	    		print(f'{name} is already exported as ogg file, skipping...')
 	    	else:	
-		    	print(f"Exporting {name} ...")
-		    	sound = AudioSegment.from_mp3(name+ext)
-		    	sound.export(f"{path}/export/{name}.ogg", format="ogg")
+		    	progress_bar(name,ext,path)
+
 
 print("Write the path where the mp3 files are for export them as ogg")
 path = input('MP3 Path -> ')		    	

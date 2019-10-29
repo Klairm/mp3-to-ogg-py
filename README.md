@@ -1,5 +1,5 @@
 # mp3-to-ogg-py
-A exporting tool written in python for convert mp3 files to ogg files
+A conversion tool for export mp3 files as ogg, and vice versa
 
 ## Usage
 ```bash

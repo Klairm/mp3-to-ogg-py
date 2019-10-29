@@ -5,11 +5,19 @@ A exporting tool written in python for convert mp3 files to ogg files
 ```bash
 python3 mp3-to-ogg.py
 ```
-Then this will show up: 
+Then this will show up:
 
-Write the path where the mp3 files are for export them as ogg
+===============
+Audio converter
+===============
+[1] Mp3 to Ogg
+[2] Ogg to Mp3
+[3] Exit
+===============
+Select an option -> 
 
-MP3 Path -> /path/where/mp3/are
 
-
+1 - You will need to write the full path where the mp3 files are
+2 - Same but for the ogg files
+3 - Closes the program
 

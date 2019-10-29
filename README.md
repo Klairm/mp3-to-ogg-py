@@ -18,6 +18,8 @@ Select an option ->
 ```
 
 1 - You will need to write the full path where the mp3 files are
+
 2 - Same but for the ogg files
+
 3 - Closes the program
 

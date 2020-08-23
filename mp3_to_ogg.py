@@ -72,10 +72,11 @@ try:
 	
 except FileNotFoundError as NoFilesFound:
 	print(NoFilesFound)
-finally:
-	print("Program finalized.")
 else:
 	print("Program finalized succesfully")
 		
+finally:
+	print("Program finalized.")
+
 		
 		

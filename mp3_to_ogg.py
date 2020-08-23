@@ -1,59 +1,50 @@
-from pydub import AudioSegment
 import sys,os,glob
 from exporters import *
-from progress.spinner import Spinner
 
 def mp3_to_ogg(path):
 	mp3list = os.chdir(path) 
-	folder = os.getcwd()[-6:] # Getting the last 6 characters 
-	if os.path.isdir('./export'):
-		pass
-	if folder == 'export': # If the last 6 characters are export it will skip 
+	if os.path.isdir('export'):
 		pass
 	else:
 		os.mkdir('export')
-	if glob.glob('*.mp3'): # Checking if there's any mp3 file
-		pass
-	else:
-		raise FileNotFoundError('Mp3 file not found') # If not, it will show an error message and exit the program
-		exit(1)
+	if not glob.glob('*.mp3'): # Checking if the directory has mp3 files to convert
+		raise FileNotFoundError(f'No MP3 files found on {path}')
+		sys.exit(1)
 	for i in os.listdir():
 		if os.path.isdir(i):
 			print("Skipping directories...")
 		else:			
-			name, ext = os.path.splitext(i)
-			if ext ==".mp3":
-				print(f'{name} is already exported as mp3 file, skipping...')
-			elif ext !='.ogg':
-				print("Skipping not ogg files...")
+			# Getting the name and extension name of the files in the specified path, then checking if their extension are .mp3
+			# or if they are already .ogg, so we can skip it.
+			# With that information, we can call the converter function
+			name, ext = os.path.splitext(i) 
+			if os.path.isfile(f'export/{name}.ogg') or ext == ".ogg":
+				print(f"{name} is already exported as ogg file, skipping...")
+			elif ext !='.mp3':
+				print("Skipping not mp3 files...")
 			else:
-				mp3_ogg(name,ext,path,folder)
+				converter(name,ext,path,"ogg")
 
 def ogg_to_mp3(path):
 	ogglsit = os.chdir(path) 
-	folder = os.getcwd()[-6:] # Getting the last 6 characters 
-	if os.path.isdir('./export'):
-		pass
-	if folder == 'export': # If the last 6 characters are export it will skip 
+	if os.path.isdir('export'):
 		pass
 	else:
 		os.mkdir('export')
-	if glob.glob('*.ogg'):
-		pass
-	else:
-		raise FileNotFoundError('OGG file not found')
-		exit(1)
+	if not glob.glob('*.mp3'):
+		raise FileNotFoundError(f'No ogg files found on {path}')
+		sys.exit(1)
 	for i in os.listdir():
 		if os.path.isdir(i):
 			print("Skipping directories...")
 		else:			
 			name, ext = os.path.splitext(i)
-			if ext ==".mp3":
+			if os.path.isfile(f'export/{name}.mp3') or ext == ".mp3":
 				print(f'{name} is already exported as mp3 file, skipping...')
 			elif ext !='.ogg':
 				print("Skipping not ogg files...")
 			else:
-				ogg_mp3(name,ext,path,folder)
+				converter(name,ext,path,"mp3")
 
 		    	
 try:
@@ -79,10 +70,12 @@ try:
 			break
 
 	
-except FileNotFoundError as NoMP3File:
-	print(NoMP3File)	
+except FileNotFoundError as NoFilesFound:
+	print(NoFilesFound)
+finally:
+	print("Program finalized.")
 else:
-	print("Program finalized")
+	print("Program finalized succesfully")
 		
 		
 		

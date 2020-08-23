@@ -17,9 +17,18 @@ Audio converter
 Select an option -> 
 ```
 
-1 - You will need to write the full path where the mp3 files are
+1 - Convert mp3 files to ogg, specifying the full path where the mp3 files are (it will convert all of them)
+Example
+```
+Select an option -> 1
+Write the path where the mp3 files are for export them as ogg
+MP3 Path ->  /home/klairm/Music/
+```
+This will check for any .mp3 files on /home/klairm/Music/ and convert them to .ogg on /home/klairm/Music/export/
 
-2 - Same but for the ogg files
+2 - Same as option 1 but for ogg files, convert ogg files to mp3
 
-3 - Closes the program
+3 - Exits the program
+
+
 
